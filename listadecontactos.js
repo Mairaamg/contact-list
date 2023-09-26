@@ -75,7 +75,6 @@ function eliminarContacto(id) {
 }
 
 eliminarContacto(5); // Eliminar por ID
-eliminarContacto(10); // Intentar eliminar un contacto que no existe por ID
 
 function imprimirContactos() {
   listaDeContactos.forEach((contacto) => {
@@ -87,5 +86,33 @@ function imprimirContactos() {
     console.log('------------------------');
   });
 }
+
+//identificar el contacto por el ID
+function actualizarContacto(id, nuevosDatos) {
+  const contacto = listaDeContactos.find((contacto) => contacto.id === id);
+
+  if (contacto) {
+    if (nuevosDatos.nombres) {
+      contacto.nombres = nuevosDatos.nombres;
+    }
+    if (nuevosDatos.apellidos) {
+      contacto.apellidos = nuevosDatos.apellidos;
+    }
+    if (nuevosDatos.telefono) {
+      contacto.telefono = nuevosDatos.telefono;
+    }
+    if (nuevosDatos.email) {
+      contacto.email = nuevosDatos.email;
+    }
+    if (nuevosDatos.ubicacion) {
+      contacto.ubicacion = nuevosDatos.ubicacion;
+    }
+    console.log(`Contacto ID ${id} actualizado.`);
+  } else {
+    console.log(`No se encontró un contacto con ID ${id}.`);
+  }
+}
+actualizarContacto(6, {email: 'manuelarc@gmail.com'});
+actualizarContacto(2, {telefono: '316-245-9571'});
 
 imprimirContactos();
